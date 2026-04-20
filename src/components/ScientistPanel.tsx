@@ -90,6 +90,14 @@ export default function ScientistPanel({
             </span>
           ))}
         </div>
+
+        {/* View full profile CTA */}
+        <a
+          href={`/profile/${scientist.id}`}
+          className="mt-4 block w-full text-center px-3 py-2 bg-primary hover:bg-primary-dark text-white text-sm font-medium rounded-md transition-colors"
+        >
+          View full due-diligence profile &rarr;
+        </a>
       </div>
 
       {/* Company badges */}
@@ -241,12 +249,6 @@ export default function ScientistPanel({
           Links
         </h3>
         <div className="flex flex-col gap-2">
-          <a
-            href={`/profile/${scientist.id}`}
-            className="text-sm text-primary hover:text-primary-dark transition-colors font-medium"
-          >
-            View full profile &rarr;
-          </a>
           <a
             href={`https://brain.manyworldscapital.com/papers?q=${encodeURIComponent(scientist.name)}`}
             target="_blank"

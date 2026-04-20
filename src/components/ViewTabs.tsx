@@ -25,18 +25,19 @@ export default function ViewTabs({ active, profileId }: ViewTabsProps) {
       {profileHref ? (
         <Link
           href={profileHref}
-          className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+          className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors flex items-center gap-1.5 ${
             active === "profile"
               ? "bg-white/10 text-white"
-              : "text-white/50 hover:text-white/80"
+              : "bg-primary/20 text-white hover:bg-primary/30 ring-1 ring-primary/40"
           }`}
         >
+          <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
           Profile
         </Link>
       ) : (
         <span
           className="px-3 py-1.5 text-xs font-medium rounded-md text-white/25 cursor-not-allowed"
-          title="Select a scientist first"
+          title="Click a scientist on the graph to enable"
         >
           Profile
         </span>
