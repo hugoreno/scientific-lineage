@@ -4,6 +4,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import { Scientist, Relationship } from "@/lib/types";
 import { EDGE_COLORS } from "@/lib/graphUtils";
+import { MetricCard, formatNumber } from "./MetricCard";
 
 const TrajectoryChart = dynamic(() => import("./TrajectoryChart"), { ssr: false });
 
@@ -241,6 +242,12 @@ export default function ScientistPanel({
         </h3>
         <div className="flex flex-col gap-2">
           <a
+            href={`/profile/${scientist.id}`}
+            className="text-sm text-primary hover:text-primary-dark transition-colors font-medium"
+          >
+            View full profile &rarr;
+          </a>
+          <a
             href={`https://brain.manyworldscapital.com/papers?q=${encodeURIComponent(scientist.name)}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -280,17 +287,3 @@ export default function ScientistPanel({
   );
 }
 
-function MetricCard({ label, value }: { label: string; value: string | number }) {
-  return (
-    <div className="bg-white/5 rounded-lg p-3 text-center">
-      <div className="text-lg font-heading font-bold text-white">{value}</div>
-      <div className="text-xs text-white/40 mt-0.5">{label}</div>
-    </div>
-  );
-}
-
-function formatNumber(n: number): string {
-  if (n >= 1000000) return `${(n / 1000000).toFixed(1)}M`;
-  if (n >= 1000) return `${(n / 1000).toFixed(1)}K`;
-  return n.toString();
-}

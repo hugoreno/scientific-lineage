@@ -9,6 +9,7 @@ import Legend from "@/components/Legend";
 import FilterControls from "@/components/FilterControls";
 import MethodologyModal from "@/components/MethodologyModal";
 import TimelineSlider from "@/components/TimelineSlider";
+import ViewTabs from "@/components/ViewTabs";
 import { Scientist, Relationship, GraphData } from "@/lib/types";
 
 export default function Home() {
@@ -191,13 +192,14 @@ export default function Home() {
         </h1>
       </div>
 
-      {/* Search - top left */}
-      <div className="absolute top-5 left-5 z-20">
+      {/* Search + tabs - top left */}
+      <div className="absolute top-5 left-5 z-20 flex items-center gap-2">
         <SearchBar
           scientists={graphData.nodes}
           onSearch={handleSearch}
           onSelect={handleSearchSelect}
         />
+        <ViewTabs active="graph" profileId={selectedScientist?.id ?? null} />
       </div>
 
       {/* Filter controls - top right */}
